@@ -164,8 +164,9 @@
           id="titular"
           name="titular"
           placeholder="Como aparece en la tarjeta"
-          minlength="1"
+          minlength="5"
           maxlength="60"
+          required
         />
       </div>
 
@@ -184,7 +185,7 @@
           id="numero-tarjeta"
           name="numero_tarjeta"
           placeholder="1234 5678 9012 3456"
-          pattern="\d{15}"
+          pattern="\d{16}"
           required
           maxlength="16"
         />
@@ -202,7 +203,7 @@
             que limite el rango numérico entre 1 y 12.
           -->
           <input
-            type="text"
+            type="number"
             id="mes-exp"
             name="mes_exp"
             placeholder="MM"
@@ -226,8 +227,8 @@
             id="anio-exp"
             name="anio_exp"
             placeholder="AAAA"
-            min="2024"
-            max="2020"
+            min="2026"
+            max="2035"
             required
           />
         </div>
@@ -243,7 +244,7 @@
           Usa el type correcto y un pattern para aceptar 3 o 4 dígitos.
         -->
         <input
-          type="email"
+          type="number"
           id="cvv"
           name="cvv"
           placeholder="123"

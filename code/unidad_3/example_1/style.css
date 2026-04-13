@@ -17,8 +17,8 @@ h2 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
     min-height: 200px;
     
     /* PROPIEDADES PARA MODIFICAR: */
-    flex-direction: row;      /* row, column, row-reverse */
-    justify-content: center;  /* flex-start, center, space-between, space-around */
+    flex-direction: column;      /* row, column, row-reverse */
+    justify-content: space-around;  /* flex-start, center, space-between, space-around */
     align-items: center;      /* stretch, center, flex-start, flex-end */
     flex-wrap: wrap;          /* nowrap, wrap */
     gap: 10px;

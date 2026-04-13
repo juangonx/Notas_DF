@@ -84,7 +84,7 @@ footer {
     }
 
     nav {
-        flex-direction: column;
+        column: column;
         align-items: center;
     }
 }

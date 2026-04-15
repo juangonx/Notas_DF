@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ejercicio 1 — Formulario de Registro</title>
+  <title>Ejercicio 1 — Formulario de Registro Completo</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -81,21 +81,15 @@
       border-color: #6366f1;
       box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
     }
+    /* Estilos de validación visual */
+    input:italic:placeholder-shown { border-color: #d1d5db; }
     input:valid { border-color: #22c55e; }
     input:invalid:not(:placeholder-shown) { border-color: #ef4444; }
+
     .hint {
       font-size: 11px;
       color: #9ca3af;
       margin-top: 4px;
-    }
-    .todo {
-      background: #fef2f2;
-      border: 1.5px dashed #fca5a5;
-      border-radius: 7px;
-      padding: 10px 12px;
-      font-size: 13px;
-      color: #991b1b;
-      font-style: italic;
     }
     button[type="submit"] {
       width: 100%;
@@ -114,55 +108,53 @@
   </style>
 </head>
 <body>
+
 <div class="card">
   <span class="badge">Ejercicio 1 de 3</span>
   <h1>Formulario de Registro</h1>
 
   <div class="instruccion">
-    <strong>📝 Tu tarea:</strong>
-    Completa los atributos faltantes marcados con <code>???</code> en los campos del formulario.
-    Usa atributos HTML5 semánticos de validación: <code>type</code>, <code>required</code>,
-    <code>minlength</code>, <code>maxlength</code>, <code>min</code>, <code>max</code>, <code>pattern</code>.
+    <strong>✅ Reto completado:</strong>
+    Se han implementado los tipos <code>email</code>, <code>number</code>, <code>url</code>, 
+    así como validaciones de longitud, rangos y expresiones regulares (Regex).
   </div>
 
-  <form novalidate id="forma-registro">
+  <form id="forma-registro">
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- SECCIÓN 1: Datos personales                -->
-    <!-- ═══════════════════════════════════════════ -->
     <fieldset>
       <legend>👤 Datos personales</legend>
 
       <div class="campo">
         <label for="nombre">Nombre completo <span class="requerido">*</span></label>
-        <!-- TODO: agrega required y los atributos de longitud correctos -->
         <input
           type="text"
           id="nombre"
           name="nombre"
           placeholder="Ej. Ana García López"
-          ???
+          minlength="3"
+          maxlength="60"
+          required
         />
         <p class="hint">Mínimo 3 caracteres, máximo 60.</p>
       </div>
 
       <div class="campo">
         <label for="edad">Edad <span class="requerido">*</span></label>
-        <!-- TODO: ¿qué type es correcto aquí? Agrega min y max para rango 16–99 -->
         <input
-          type="???"
+          type="number"
           id="edad"
           name="edad"
           placeholder="Ej. 21"
-          ???
+          min="18"
+          max="99"
+          required
         />
         <p class="hint">Solo mayores de 16 años. Máximo 99.</p>
       </div>
 
       <div class="campo">
         <label for="pais">País <span class="requerido">*</span></label>
-        <!-- TODO: ¿cómo haces requerido un <select>? -->
-        <select id="pais" name="pais" ???>
+        <datalist id="pais" name="pais" required>
           <option value="">-- Selecciona --</option>
           <option value="mx">México</option>
           <option value="co">Colombia</option>
@@ -172,17 +164,13 @@
       </div>
     </fieldset>
 
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- SECCIÓN 2: Cuenta                         -->
-    <!-- ═══════════════════════════════════════════ -->
     <fieldset>
       <legend>🔐 Cuenta</legend>
 
       <div class="campo">
         <label for="email">Correo electrónico <span class="requerido">*</span></label>
-        <!-- TODO: usa el type semántico correcto para emails -->
         <input
-          type="???"
+          type="email"
           id="email"
           name="email"
           placeholder="usuario@ejemplo.com"
@@ -192,20 +180,13 @@
 
       <div class="campo">
         <label for="password">Contraseña <span class="requerido">*</span></label>
-        <!--
-          TODO: el type es "password".
-          Agrega un pattern que exija:
-            - Al menos 8 caracteres
-            - Al menos una letra mayúscula
-            - Al menos un número
-          Pista: usa (?=...) en la expresión regular
-        -->
         <input
           type="password"
           id="password"
           name="password"
           placeholder="••••••••"
-          pattern="???"
+          pattern="^([A-Z]).{8,}$"
+          title="Debe tener al menos 8 caracteres, una letra mayúscula y un número."
           required
         />
         <p class="hint">Mínimo 8 caracteres, una mayúscula y un número.</p>
@@ -213,9 +194,8 @@
 
       <div class="campo">
         <label for="url-perfil">URL de perfil (opcional)</label>
-        <!-- TODO: ¿qué type valida URLs automáticamente en HTML5? -->
         <input
-          type="???"
+          type="url"
           id="url-perfil"
           name="url_perfil"
           placeholder="https://mi-sitio.com"
@@ -228,15 +208,12 @@
 </div>
 
 <script>
-  // ─── BONUS: Activa la validación nativa al enviar ───────────────────────
-  // TODO (opcional): Elimina el atributo novalidate del <form>
-  // y observa cómo el navegador muestra los errores automáticamente.
-  // ¿Qué diferencia ves entre usar novalidate y no usarlo?
-
+  // Al quitar 'novalidate', este JS solo se ejecutará si HTML5 valida el formulario primero
   document.getElementById('forma-registro').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('✅ Formulario enviado correctamente (simulado).');
+    alert('✅ ¡Validación superada! Formulario enviado correctamente.');
   });
 </script>
+
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica UMAR: Catálogo de Libros</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" type="module" defer></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Gestión de Biblioteca Moderna</h1>
+        <p>Ingeniería en Tecnologías Computacionales</p>
+    </header>
+
+    <main id="app">
+        <section class="controls">
+            <h2>Panel de Control</h2>
+            <p>Presiona el botón para cargar los libros desde la API simulada.</p>
+            <button id="btnCargar" class="btn-primary">Actualizar Catálogo</button>
+        </section>
+
+        <hr>
+
+        <section class="catalog-container">
+            <h2>Libros Disponibles</h2>
+            <div id="catalogo" class="grid-layout">
+                <p class="placeholder">El catálogo está vacío. Cargue datos para comenzar.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Universidad del Mar - Programación Web Avanzada</p>
+    </footer>
+
+</body>
+</html>

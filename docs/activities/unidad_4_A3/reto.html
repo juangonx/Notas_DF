@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Laboratorio: Rest & Shorthand</title>
+</head>
+<body>
+    <h2>Consola de Sistema</h2>
+    <div id="log-output"></div>
+
+    <script>
+        // TAREA: Implementar Rest Parameters (...) para recibir 'mensajes'
+        function crearReporte(categoria, ...mensajes) {
+            const fecha = new Date().toLocaleTimeString();
+            const total = mensajes.length;
+
+            // TAREA: Retornar objeto usando Shorthand Properties
+            // e incluir un metodo llamado 'notificar'
+            return {
+                categoria,
+                mensajes,
+                fecha,
+                total,
+                notificar() {
+                    return `[${this.fecha}] ${this.categoria}: ${this.total} items.`;
+                }
+            };
+        }
+
+        // PRUEBA DEL SISTEMA
+        const reporte = crearReporte("SISTEMA", "Error 404", "Timeout", "Auth Failure");
+        
+        // Renderizado
+        document.getElementById('log-output').innerHTML = `
+            <p><strong>${reporte.notificar()}</strong></p>
+            <ul>${reporte.mensajes.map(m => `<li>${m}</li>`).join('')}</ul>
+        `;
+    </script>
+</body>
+</html>

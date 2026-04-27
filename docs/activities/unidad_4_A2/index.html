@@ -34,17 +34,18 @@
         // TAREA 1: Desestructurar 'nombre' y 'precioBase' de ofertaDelDia
         // TU CÓDIGO AQUÍ:
         
+        const { nombre, precioBase } = ofertaDelDia;
 
         // TAREA 2: Crear 'inventarioTotal' combinando 'inventarioActual' 
         // y 'nuevosProductos' usando Spread Operator.
         // TU CÓDIGO AQUÍ:
-        const inventarioTotal = []; 
+        const inventarioTotal = [...inventarioActual, ...nuevosProductos];
 
 
         // TAREA 3: Crear 'productoConDescuento' usando Spread para copiar 
         // 'ofertaDelDia' y sobreescribir el 'precioBase' aplicando un 20% de descuento.
         // TU CÓDIGO AQUÍ:
-        const productoConDescuento = {};
+        const productoConDescuento = { ...ofertaDelDia, precioBase: ofertaDelDia.precioBase * 0.8 };
 
 
         // --- FIN DEL ESPACIO PARA EL ALUMNO ---

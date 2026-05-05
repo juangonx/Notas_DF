@@ -215,6 +215,10 @@
           id="nombre-completo"
           name="nombre_completo"
           placeholder="Ej. Carlos Mendoza Ruiz"
+          required
+          minlength="5"
+          maxlength="80"
+
         />
       </div>
 
@@ -230,11 +234,12 @@
             (para garantizar al menos 18 años)
           -->
           <input
-            type="???"
+            type="date"
             id="fecha-nac"
             name="fecha_nac"
-            max="???"
+            max="2007-03-20"
             required
+
           />
         </div>
         <div class="campo">
@@ -246,11 +251,11 @@
             Ejemplo válido: 5551234567 o +525551234567
           -->
           <input
-            type="???"
+            type="tel"
             id="telefono-solicit"
             name="telefono"
             placeholder="5551234567"
-            pattern="???"
+            spattern="^\+?52?\d{10}$"
             required
           />
           <p class="hint">10 dígitos, opcionalmente con +52</p>
@@ -264,7 +269,7 @@
           el type ya valida el formato de email.
         -->
         <input
-          type="???"
+          type="email"
           id="email-solicit"
           name="email"
           placeholder="tu@correo.com"
@@ -284,7 +289,7 @@
         <!--
           TODO: haz este select requerido. ¿Recuerdas cómo se hace?
         -->
-        <select id="puesto" name="puesto" ???>
+        <select id="puesto" name="puesto" required>
           <option value="">-- Selecciona un puesto --</option>
           <option value="frontend">Desarrollador Frontend</option>
           <option value="backend">Desarrollador Backend</option>
@@ -300,11 +305,11 @@
             TODO: tipo numérico, rango de 0 a 40 años, requerido.
           -->
           <input
-            type="???"
+            type="number"
             id="anios-exp"
             name="anios_exp"
-            min="???"
-            max="???"
+            min="0"
+            max="40"
             required
           />
         </div>
@@ -319,7 +324,10 @@
             id="salario"
             name="salario"
             placeholder="Ej. 25000"
-            ???
+            min="8000"
+            max="150000"
+            step="500"
+            required
           />
         </div>
       </div>
@@ -355,7 +363,7 @@
           TODO: usa el type correcto para URLs y hazlo requerido.
         -->
         <input
-          type="???"
+          type="url"
           id="linkedin"
           name="linkedin"
           placeholder="https://linkedin.com/in/tu-perfil"
@@ -373,7 +381,9 @@
           id="carta"
           name="carta"
           placeholder="Cuéntanos por qué eres el candidato ideal... (mínimo 100 caracteres)"
-          ???
+          minlength="100"
+          maxlength="1000"
+          required
         ></textarea>
         <p class="hint">Entre 100 y 1000 caracteres.</p>
       </div>
@@ -440,7 +450,12 @@
     // Si todos son válidos, retorna true
 
     // Borra este comentario y escribe tu código aquí:
-
+    for (const campo of campos) {
+    if (!campo.checkValidity()) {
+      campo.reportValidity();
+      return false;
+    }
+  }
 
     return true; // ← cambia esto cuando implementes la lógica
   }
